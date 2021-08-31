@@ -31,7 +31,7 @@ class Crypto {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             } 
-        }).then(res => res.json())
+        }).then(res => res.status === 200 ? res.json() : res.text())
     }
     async stats() {
         return await this.call()
