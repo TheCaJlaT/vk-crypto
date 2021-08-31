@@ -15,8 +15,8 @@ const myaccount = new Crypto("ваш токен")
 ## Примеры
 ### Получение статистики аккаунта
 ```javascript 
-const Crypto = require("vk-crypto")
-const myaccount = new Crypto("ваш токен")
+const Crypto = require("vk-crypto");
+const myaccount = new Crypto("ваш токен");
 
 (async ()=>{
   let stats = await myaccount.stats()
