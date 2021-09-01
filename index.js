@@ -39,7 +39,7 @@ class Crypto {
 
     async balance(id) {
         let res = await this.call('GetUserBalance', id)
-        return res.balance
+        return res
     }
 
     async buy(name) {
@@ -60,11 +60,14 @@ class Crypto {
             { name: 'USD', stat_name: 'usdCoin', boost: 60, price: 2560 },
             { name: 'Solana', stat_name: 'solana', boost: 80, price: 4000 }
         ]
+        let payback = []
         let stat = await this.call()
-        for (let cost of costs) {
-            cost.price = cost.price * Math.pow(2, stat[cost.stat_name])
+        for (let i = 0; i < costs.length; i++) {
+            costs[i].price = costs[i].price * Math.pow(2, stat[costs[i].stat_name])
+            payback[i] = costs[i].price / (stat.in_minute_mining + costs[i].boost)
         }
-        return { costs: costs, balance: stat.balance, profit: stat.in_minute_mining }
+        let min_payback = Math.min.apply(null, payback)
+        return { costs: costs, balance: stat.balance, profit: stat.in_minute_mining, recommended: costs[payback.indexOf(min_payback)] }
     }
 
     async getTop() {
