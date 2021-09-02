@@ -11,7 +11,7 @@ class Crypto {
     async getGameToken(platform = 'web') {
         if (!this.gametoken) {
             const res = await fetch(`https://api.vk.com/method/apps.get?access_token=${this.token}&v=5.131&app_id=7932067&platform=${platform}`).then(res => res.json());
-            const profid = await fetch(`https://api.vk.com/method/account.getProfileInfo?access_token=${this.token}&v=5.131`).then(res => res.json()).then( response => response.response.id);
+            const profid = await fetch(`https://api.vk.com/method/account.getProfileInfo?access_token=${this.token}&v=5.131`).then(res => res.json()).then(response => response.response.id);
             this.id = profid;
             const weburl = res?.response?.items?.[0].webview_url;
             if (!weburl) throw new Error("cannot get gametoken(vk params)");
@@ -22,7 +22,7 @@ class Crypto {
 
     async call(method = "", id = '#useid', params = {}) {
         const at = await this.getGameToken()
-        Object.assign(params, {id: id === '#useid' ? this.id : id, params: at})
+        Object.assign(params, { id: id === '#useid' ? this.id : id, params: at })
         return await fetch(`https://baguette-game.com:1000/${method}`, {
             body: JSON.stringify(params),
             method: "POST",
@@ -30,7 +30,7 @@ class Crypto {
                 'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
-            } 
+            }
         }).then(res => res.status === 200 ? res.json() : res.text())
     }
     async stats() {
@@ -58,7 +58,12 @@ class Crypto {
             { name: 'Dogecoin', stat_name: 'dogecoin', boost: 40, price: 1140 },
             { name: 'Polkadot', stat_name: 'polkadot', boost: 50, price: 1710 },
             { name: 'USD', stat_name: 'usdCoin', boost: 60, price: 2560 },
-            { name: 'Solana', stat_name: 'solana', boost: 80, price: 4000 }
+            { name: 'Solana', stat_name: 'solana', boost: 80, price: 4000 },
+            { name: 'Uniswap', stat_name: 'uniswap', boost: 110, price: 6000 },
+            { name: 'Chaincoin', stat_name: 'chaincoin', boost: 150, price: 9000 },
+            { name: 'Terra', stat_name: 'terra', boost: 200, price: 13500 },
+            { name: 'Litecoin', stat_name: 'litecoin', boost: 250, price: 20000 },
+            { name: 'Filecoin', stat_name: 'filecoin', boost: 300, price: 30000 }
         ]
         let payback = []
         let stat = await this.call()
@@ -90,7 +95,7 @@ class Crypto {
         if (!amount) throw new Error('Вы не указали сумму перевода')
         if (!recipient) throw new Error('Вы не указали получателя')
         return await this.call('Transfer', this.id, {
-            "amount": amount, 
+            "amount": amount,
             "recipient_id": recipient
         })
     }
