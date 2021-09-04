@@ -63,7 +63,12 @@ class Crypto {
             { name: 'Chaincoin', stat_name: 'chaincoin', boost: 150, price: 9000 },
             { name: 'Terra', stat_name: 'terra', boost: 200, price: 13500 },
             { name: 'Litecoin', stat_name: 'litecoin', boost: 250, price: 20000 },
-            { name: 'Filecoin', stat_name: 'filecoin', boost: 300, price: 30000 }
+            { name: 'Filecoin', stat_name: 'filecoin', boost: 300, price: 30000 },
+            { name: 'Tron', stat_name: 'tron', boost: 400, price: 40000 },
+            { name: 'Monero', stat_name: 'monero', boost: 500, price: 55000 },
+            { name: 'Theta', stat_name: 'theta', boost: 600, price: 75000 },
+            { name: 'Aave', stat_name: 'aave', boost: 750, price: 90000 },
+            { name: 'Kusama', stat_name: 'kusama', boost: 1000, price: 120000 }
         ]
         let payback = []
         let stat = await this.call()

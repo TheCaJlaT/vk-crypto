@@ -1,6 +1,6 @@
 {
   "name": "vk-crypto",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "wrapped methods for vk mini app \"Crypto\"",
   "main": "index.js",
   "scripts": {
