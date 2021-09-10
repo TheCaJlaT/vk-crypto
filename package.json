@@ -1,7 +1,7 @@
 {
   "name": "vk-crypto",
-  "version": "1.0.4",
-  "description": "wrapped methods for vk mini app \"Crypto\"",
+  "version": "1.0.5",
+  "description": "Wrapped methods for vk mini app \"Crypto\"",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,9 @@
     "url": "git+https://github.com/TheCaJlaT/vk-crypto.git"
   },
   "keywords": [
-    "vk"
+    "vk",
+    "вк",
+    "crypto"
   ],
   "author": "TheCaJlaT",
   "license": "MIT",
@@ -20,6 +22,6 @@
   },
   "homepage": "https://github.com/TheCaJlaT/vk-crypto#readme",
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^3.0.0"
   }
 }
